@@ -5,7 +5,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         boolean continuar  =true;
         while (continuar) {
-            System.out.println("Escolha o exercicio: ");
+            System.out.println("Escolha o exercicio(1-6): ");
 
             System.out.println("Digite 7 para sair");
             int selectExercicio = sc.nextInt();
@@ -62,15 +62,8 @@ public class Main {
 
     public static void exercicio2(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Insira o lado do quadrado: ");
-        double lado = sc.nextDouble();
-        System.out.println("A área do quadrado é "+ lado * lado);
-    }
-
-    public static void exercicio3(){
-        Scanner sc = new Scanner(System.in);
         System.out.println("Insira o nome do aluno");
-        String Nomealuno = sc.next();
+        String nomeAluno = sc.next();
         System.out.println("Digite a nota 1");
         double nota1 = sc.nextDouble();
         System.out.println("Digite a nota 2");
@@ -81,49 +74,113 @@ public class Main {
         double mediaExercicio = sc.nextDouble();
 
         double mediaAproveitamento = ((nota1 + nota2) * 2 + (( nota3 * 3) + mediaExercicio)) / 7;
-        if(mediaAproveitamento => 9){
+        System.out.printf(nomeAluno + " tirou conceito: ");
+        if(mediaAproveitamento >= 9){
+            System.out.println("A");
+        } else if(mediaAproveitamento >= 7.5 && mediaAproveitamento < 9.0){
+            System.out.println("B");
+        } else if(mediaAproveitamento >= 6.0 && mediaAproveitamento < 7.5){
+            System.out.printf("C");
+        } else if(mediaAproveitamento < 6) {
+            System.out.println("D");
+        }
+    }
 
+    public static void exercicio3(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Informe o saldo médio");
+        int saldoMedio = sc.nextInt();
+        if(saldoMedio > 0 && saldoMedio <= 200){
+            System.out.println(saldoMedio + " O valor do crédito vai ser: " + saldoMedio);
+        } else if(saldoMedio > 200 && saldoMedio <= 300){
+            System.out.println(saldoMedio + " O valor do crédito vai ser: " +( saldoMedio + (saldoMedio * 0.2)));
+        } else if(saldoMedio > 400 && saldoMedio <= 600){
+            System.out.println(saldoMedio + " O valor do crédito vai ser: " + (saldoMedio + (saldoMedio * 0.3)));
+        } else if(saldoMedio > 600){
+            System.out.println(saldoMedio + " O valor do crédito vai ser: " + (saldoMedio + (saldoMedio * 0.4)));
         }
 
     }
 
     public static void exercicio4(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Informe a velocidade: ");
-        int velocidade = sc.nextInt();
-        System.out.println("O carro percorrerá " + velocidade * 5 + "km em 5 horas");
-        System.out.println("O carro percorrerá " + velocidade * 8 + "km em 8 horas");
-        System.out.println("O carro percorrerá " + velocidade * 12 + "km em 12 horas");
+        System.out.println("Numero 1: ");
+        double numero1 = sc.nextInt();
+        System.out.println("Numero 2: ");
+        double numero2 = sc.nextInt();
+        System.out.println("Operação: divisão(/), multiplicação(*), adição(+) e subtração(-)");
+        String operacao = sc.next();
+        double resultado = 0;
+        switch (operacao) {
+            case "/":
+                resultado = (numero1 / numero2);
+                break;
+            case "*":
+                resultado = (numero1 * numero2);
+                break;
+            case "-":
+                resultado = (numero1 - numero2);
+                break;
+            case "+":
+                resultado = (numero1 + numero2);
+                break;
+            default:
+                System.out.println("Operação inválida");
+                break;
+        }
+
+        System.out.println(resultado);
+        if(resultado % 2 == 0){
+            System.out.println("Par");
+        } else{
+            System.out.println("Impar");
+        }
+
+        if(resultado > 0){
+            System.out.println("Positivo");
+        } else {
+            System.out.println("Negativo");
+        }
     }
 
     public static void exercicio5(){
         Scanner sc = new Scanner(System.in);
-        double a = sc.nextInt();
-        double b = sc.nextInt();
-        double c = sc.nextInt();
-        double d = sc.nextInt();
-        double e = sc.nextInt();
-        double f = sc.nextInt();
-
-        double y = ((a * f) - (c * d)) / ((a * e) - (b * d));
-
-        double x =((c * e)- (b * f)) / ((a * e) - (b * d));
-
-        System.out.println("x: "  + x);
-        System.out.println("y: "  + y);
-
+        System.out.println("Informe a letra");
+        String letra = sc.next();
+        String[] vogais = {"a","e","i","o","u"};
+        boolean eVogal = false;
+        for(String vogal : vogais){
+            if(vogal.equals(letra)){
+                eVogal = true;
+            }
+        }
+        if(eVogal){
+            System.out.println("Vogal");
+        } else {
+            System.out.println("Consoante");
+        }
     }
 
     public static void exercicio6(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Informe a área: ");
-        double area = scanner.nextDouble();
-        double acre = 4046.86;
-        double pesQuadrados =  1.07639;
-        double hectar = 10000;
-        System.out.println("A área em acres é: " + area / acre);
-        System.out.println("A área em pés quadrados é: " + area * pesQuadrados * 10);
-        System.out.println("A área em hectares é: " + area / hectar);
+        System.out.println("Digite um ano: ");
+        int ano = scanner.nextInt();
+        boolean bissexto = false;
+        if(ano % 400 == 0){
+            bissexto = true;
+        } else{
+            if(ano % 4 == 0 && ano % 100 != 0){
+                bissexto = true;
+            } else {
+                bissexto = false;
+            }
+        }
+
+        if(bissexto){
+            System.out.println("Bissexto");
+        } else {
+            System.out.println("Não Bissexto");
+        }
 
     }
 
