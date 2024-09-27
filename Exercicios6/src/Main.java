@@ -1,0 +1,172 @@
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        boolean continuar  =true;
+        while (continuar) {
+            System.out.println("Escolha o exercicio(1-6): ");
+
+            System.out.println("Digite 7 para sair");
+            int selectExercicio = sc.nextInt();
+
+            switch (selectExercicio){
+                case 1:exercicio1();
+                    break;
+                case 2:exercicio2();
+                    break;
+                case 3:exercicio3();
+                    break;
+                case 4:exercicio4();
+                    break;
+                case 5:exercicio5();
+                    break;
+                case 6:exercicio6();
+                    break;
+                case 7:
+                    continuar=false;
+                    break;
+            }
+
+
+        }
+
+    }
+
+    public static void exercicio1(){
+        Scanner sc = new Scanner(System.in);
+        int[] array = {1,2,3,4,5,6,7,8,9,0};
+        int soma = 0;
+
+        for(int i = 0; i < array.length; i++){
+            if (array[i] % 2 == 1){
+                soma += array[i];
+            }
+        }
+        System.out.println(soma);
+    }
+
+    public static void exercicio2(){
+        Random random = new Random();
+        int[] array = new int[10];
+        int[] array35 = new int[10];
+        for(int i = 0; i < array.length; i++){
+            array[i] = random.nextInt(100);
+            if (array[i] > 35){
+                array35[i] = array[i];
+            }
+        }
+        for(int i = 0; i < array.length; i++){
+            System.out.println("Array 1: ");
+            System.out.println(array[i]);
+            System.out.println("Array 2: ");
+            System.out.println(array35[i]);
+        }
+    }
+
+    public static void exercicio3(){
+       int[] array = new int[10];
+       int menor15 = 0;
+       int igual15 = 0;
+       int soma15 = 0;
+       int countMais15 = 0;
+        Random random = new Random();
+       for(int i = 0; i < array.length; i++){
+           array[i] = random.nextInt(30);
+           if(array[i] > 15){
+               soma15 += array[i];
+               countMais15 ++;
+           } else if(array[i] == 15){
+               igual15++;
+           } else {
+               menor15 += array[i];
+           }
+       }
+        System.out.println("Array: ");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(" "+ array[i]);
+        }
+
+        System.out.println("\nMenor que 15: " + menor15);
+        System.out.println("Igual a 15: " + igual15);
+        System.out.println("Maior que 15: " + (soma15 / countMais15));
+    }
+
+    public static void exercicio4(){
+        String[] nomePessoas = {"Claudio", "Pedro", "Maria", "Joaquim", "Jorge"};
+        int[] cds = {33,4,32,45,10};
+        int[] locacoesGratis = {0,0,0,0,0};
+
+        for(int i = 0; i < nomePessoas.length; i++){
+            while (cds[i] >= 10){
+                locacoesGratis[i] ++;
+                cds[i] -= 10;
+            }
+
+            System.out.println("Nome: " + nomePessoas[i]  + " Locações gratuitas: " + locacoesGratis[i]);
+        }
+    }
+
+    public static void exercicio5(){
+        Scanner scanner = new Scanner(System.in);
+        String nomeMae = "";
+        String nomeFilhos = "";
+        String idade = "";
+        int entrevistados = 0;
+        String[][] maeFilhos = new String[10][10];
+        while (nomeMae != "0" || nomeFilhos != "0") {
+            System.out.println("Qual o nome da mãe?(Ou digite 0 para sair)");
+            nomeMae = scanner.nextLine();
+            if (nomeMae.equals("0")){
+                break;
+            }
+            System.out.println("Digite os nomes dos fihos Ex: Mario,João,Márcio ");
+            nomeFilhos = scanner.nextLine();
+            System.out.println("Insira a idade dos filhos: Ex: 6,5,23,42 ");
+            idade = scanner.nextLine();
+
+            maeFilhos[0][0] = nomeMae;
+            maeFilhos[0][1] = nomeFilhos;
+            maeFilhos[0][2] = idade;
+
+            for(int i = 0; i < maeFilhos.length; i++){
+                if(maeFilhos[i][0] == null){
+                    break;
+                }
+                String[]partsNome = nomeFilhos.split(",");
+                String[]partsIdade = idade.split(",");
+                System.out.println("Nome da mae: " + maeFilhos[i][0] + "\nNome dos filhos: " + maeFilhos[i][1] + "\nIdade dos filhos: " + maeFilhos[i][2] +  "\nQuantidade de filhos: " + partsNome.length);
+
+
+            }
+        }
+
+
+    }
+
+    public static void exercicio6(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite um ano: ");
+        int ano = scanner.nextInt();
+        boolean bissexto = false;
+        if(ano % 400 == 0){
+            bissexto = true;
+        } else{
+            if(ano % 4 == 0 && ano % 100 != 0){
+                bissexto = true;
+            } else {
+                bissexto = false;
+            }
+        }
+
+        if(bissexto){
+            System.out.println("Bissexto");
+        } else {
+            System.out.println("Não Bissexto");
+        }
+
+    }
+
+}
